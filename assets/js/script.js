@@ -22,9 +22,9 @@ $.each(timeArray, function (i, value) {
   
   if (dataTime > currentTime) {
     dataInputs.classList.add('future')
-  } else if (dataTime === currentTime) {
+  } else if (dataTime == currentTime) {
     dataInputs.classList.add('present')
-  } else {
+  } else if (dataTime < currentTime) {
     dataInputs.classList.add('past')
   }
 
