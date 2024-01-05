@@ -66,9 +66,16 @@ header {
   color: white;
 }
 
-.saveBtn i:hover {
-  font-size: 20px;
+.saveBtn:hover {
+  background-color: #06aed5;
+}
+
+.saveBtn i {
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+}
+
+.saveBtn:hover i {
+  font-size: 20px;
 }
