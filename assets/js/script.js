@@ -11,10 +11,20 @@ var currentTime = dayjs().format('H');
 console.log(currentTime + 'PM');
 
 var timeArray = $('.time-block');
+var timeBlockInput = $('.time-block input')
 
 for (let i = 0; i < timeArray.length; i++) {
   dataTime = timeArray[i].dataset.time;
   console.log(dataTime);
+  console.log(currentTime)
+} if (dataTime > currentTime )(
+  timeBlockInput.addClass('future')
+)
+  else if (dataTime < currentTime) {
+    timeBlockInput.addClass('past')
+  } else if (dataTime === currentTime) {
+    timeBlockInput.addClass('present')
+  
 }
 
 
