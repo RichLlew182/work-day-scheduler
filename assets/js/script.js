@@ -3,30 +3,34 @@
 var currentDay = $('#currentDay');
 currentDay.text(dayjs().format('dddd MMMM YYYY'))
 
-// TODO: Present time blocks for standard business hours when the user scrolls down.
+//  Present time blocks for standard business hours when the user scrolls down.
+// This has been hardcoded in the HTML
 
-// TODO: Color-code each time block based on past, present, and future when the time block is viewed.
+//  Color-code each time block based on past, present, and future when the time block is viewed.
 
 var currentTime = dayjs().format('H');
 console.log(currentTime + 'PM');
 
 var timeArray = $('.time-block');
-var timeBlockInput = $('.time-block input')
+var timeBlockInput = $('.time-block input');
 
-for (let i = 0; i < timeArray.length; i++) {
-  dataTime = timeArray[i].dataset.time;
-  console.log(dataTime);
-  console.log(currentTime)
-} if (dataTime > currentTime )(
-  timeBlockInput.addClass('future')
-)
-  else if (dataTime < currentTime) {
-    timeBlockInput.addClass('past')
-  } else if (dataTime === currentTime) {
-    timeBlockInput.addClass('present')
+$.each(timeArray, function (i, value) {
+
+  var dataTime = (parseInt(value.dataset.time));
+  var dataInputs = timeBlockInput[i];
+  console.log(`The current time is ${currentTime}`)
   
-}
+  if (dataTime > currentTime) {
+    dataInputs.classList.add('future')
+  } else if (dataTime === currentTime) {
+    dataInputs.classList.add('present')
+  } else {
+    dataInputs.classList.add('past')
+  }
 
+  
+})
+  
 
 // TODO: Allow a user to enter an event when they click a time block
 
