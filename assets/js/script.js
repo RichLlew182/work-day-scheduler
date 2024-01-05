@@ -1,4 +1,7 @@
-// TODO: Display the current day at the top of the calender when a user opens the planner.
+//  Display the current day at the top of the calender when a user opens the planner.
+
+var currentDay = $('#currentDay');
+currentDay.text(dayjs().format('dddd MMMM YYYY'))
 
 // TODO: Present time blocks for standard business hours when the user scrolls down.
 
@@ -9,7 +12,3 @@
 // TODO: Save the event in local storage when the save button is clicked in that time block.
 
 // TODO: Persist events between refreshes of a page
-
-var currentDay = $('#currentDay')
-
-currentDay.text(dayjs().format('dddd MMMM YYYY'))
