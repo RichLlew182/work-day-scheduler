@@ -30,10 +30,24 @@ $.each(timeArray, function (i, value) {
 
   
 })
+
+$(timeBlockInput).each(function (i) {
+  var timeBlockValue = timeBlockInput.value;
+  timeBlockValue = "Test";
+  console.log(timeBlockValue)
+  
+  var timeAndValue = {
+    time: timeBlockInput[i].name,
+    value: timeBlockValue,
+  }
+
+  localStorage.setItem("Time and Value", JSON.stringify(timeAndValue));
+})
   
 
 // TODO: Allow a user to enter an event when they click a time block
 
 // TODO: Save the event in local storage when the save button is clicked in that time block.
+
 
 // TODO: Persist events between refreshes of a page
