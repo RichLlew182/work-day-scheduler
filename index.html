@@ -20,9 +20,96 @@
     <p class="lead">A simple calendar app for scheduling your work day</p>
     <p id="currentDay" class="lead"></p>
   </header>
-  <div class="container">
+  <div class="container p-5">
     <!-- Timeblocks go here -->
+    <div class="row time-block" id="nineAM" >
+      <div
+        class="col-lg-1 hour d-flex justify-content-center justify-content-lg-end align-items-center">9AM</div>
+      <div class="col-lg-10 d-flex px-0">
+        <textarea name="9am" data-time="9" type="text" class=" form-control rounded-0 "></textarea>
+      </div>
+      <button type="button" class="btn col-lg-1 rounded-0 rounded-end saveBtn"><i class="fas fa-save"></i></button>
+    </div>
+
+    <div class="row time-block" id="tenAM" >
+      <div
+        class="col-lg-1 hour d-flex justify-content-center justify-content-lg-end align-items-center">10AM</div>
+      <div class="col-lg-10 d-flex px-0">
+        <textarea name="10am" data-time="10" type="text" class=" form-control rounded-0 "></textarea>
+      </div>
+      <button type="button" class="btn col-lg-1 rounded-0 rounded-end saveBtn"><i class="fas fa-save"></i></button>
+    </div>
+  
+    <div class="row time-block" id="elevenAM" >
+      <div
+        class="col-lg-1 hour d-flex justify-content-center justify-content-lg-end align-items-center">11AM</div>
+      <div class="col-lg-10 d-flex px-0">
+        <textarea name="11am" data-time="11" type="text" class=" form-control rounded-0 "></textarea>
+      </div>
+      <button type="button" class="btn col-lg-1 rounded-0 rounded-end saveBtn"><i class="fas fa-save"></i></button>
+    </div>
+
+    <div class="row time-block" id="twelvePM" >
+      <div
+        class="col-lg-1 hour d-flex justify-content-center justify-content-lg-end align-items-center">12PM</div>
+      <div class="col-lg-10 d-flex px-0">
+        <textarea name="12pm" data-time="12" type="text" class=" form-control rounded-0 "></textarea>
+      </div>
+      <button type="button" class="btn col-lg-1 rounded-0 rounded-end saveBtn"><i class="fas fa-save"></i></button>
+    </div>
+    
+    <div class="row time-block" id="onePM">
+      <div
+        class="col-lg-1 hour d-flex justify-content-center justify-content-lg-end align-items-center">1PM</div>
+      <div class="col-lg-10 d-flex px-0">
+        <textarea name="1pm" data-time="13" type="text" class=" form-control rounded-0 "></textarea>
+      </div>
+      <button type="button" class="btn col-lg-1 rounded-0 rounded-end saveBtn"><i class="fas fa-save"></i></button>
+    </div>
+
+    <div class="row time-block" id="twoPM" >
+      <div
+        class="col-lg-1 hour d-flex justify-content-center justify-content-lg-end align-items-center">2PM</div>
+      <div class="col-lg-10 d-flex px-0">
+        <textarea name="2pm" data-time="14" type="text" class=" form-control rounded-0 "></textarea>
+      </div>
+      <button type="button" class="btn col-lg-1 rounded-0 rounded-end saveBtn"><i class="fas fa-save"></i></button>
+    </div>
+
+    <div class="row time-block" id="threePM" >
+      <div
+        class="col-lg-1 hour d-flex justify-content-center justify-content-lg-end align-items-center">3PM</div>
+      <div class="col-lg-10 d-flex px-0">
+        <textarea name="3pm" data-time="15" type="text" class=" form-control rounded-0 "></textarea>
+      </div>
+      <button type="button" class="btn col-lg-1 rounded-0 rounded-end saveBtn"><i class="fas fa-save"></i></button>
+    </div>
+
+    <div class="row time-block" id="fourPM" >
+      <div
+        class="col-lg-1 hour d-flex justify-content-center justify-content-lg-end align-items-center">4PM</div>
+      <div class="col-lg-10 d-flex px-0">
+        <textarea name="4pm" data-time="16" type="text" class=" form-control rounded-0 "></textarea>
+      </div>
+      <button type="button" class="btn col-lg-1 rounded-0 rounded-end saveBtn"><i class="fas fa-save"></i></button>
+    </div>
+
+    <div class="row time-block" id="fivePM">
+      <div
+        class="col-lg-1 hour d-flex justify-content-center justify-content-lg-end align-items-center">5PM</div>
+      <div class="col-lg-10 d-flex px-0">
+        <textarea name="5pm" data-time="17" type="text" class=" form-control rounded-0 "></textarea>
+      </div>
+      <button type="button" class="btn col-lg-1 rounded-0 rounded-end saveBtn"><i class="fas fa-save"></i></button>
+    </div>
+
+
+
   </div>
+
+
+
+</div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
