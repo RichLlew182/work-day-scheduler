@@ -12,7 +12,7 @@ var currentTime = dayjs().format('H');
 console.log(currentTime + 'PM');
 
 var timeArray = $('.time-block');
-var timeBlockInput = $('.time-block input');
+var timeBlockInput = $('.time-block textarea');
 
 $.each(timeArray, function (i, value) {
 
@@ -31,18 +31,39 @@ $.each(timeArray, function (i, value) {
   
 })
 
-$(timeBlockInput).each(function (i) {
-  var timeBlockValue = timeBlockInput.value;
-  timeBlockValue = "Test";
-  console.log(timeBlockValue)
+var existingTimeBlock = JSON.parse(localStorage.getItem('TimeAndValue')) || [];
+
+for (var j = 0; j < timeBlockInput.length; j ++) {
+
+  timeBlockInput[j].value = "Test-" + [j];
+  timeBlockValue = timeBlockInput[j].value
+  console.log(timeBlockValue);
+
   
   var timeAndValue = {
-    time: timeBlockInput[i].name,
+    time: timeBlockInput[j].name,
     value: timeBlockValue,
   }
+  
+  existingTimeBlock.push(timeAndValue)
+  localStorage.setItem("TimeAndValue", JSON.stringify(existingTimeBlock));
+  
+}
 
-  localStorage.setItem("Time and Value", JSON.stringify(timeAndValue));
-})
+
+// $(timeBlockInput).each(function (i) {
+//   var timeBlockValue = timeBlockInput.value;
+//   timeBlockValue = "Test";
+//   console.log(timeBlockValue)
+  
+//   var timeAndValue = {
+//     time: timeBlockInput[i].name,
+//     value: timeBlockValue,
+//   }
+
+//   localStorage.setItem("TimeAndValue", JSON.stringify(timeAndValue));
+// })
+
   
 
 // TODO: Allow a user to enter an event when they click a time block
