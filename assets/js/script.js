@@ -33,22 +33,22 @@ $.each(timeArray, function (i, value) {
 
 var existingTimeBlock = JSON.parse(localStorage.getItem('TimeAndValue')) || [];
 
-for (var j = 0; j < timeBlockInput.length; j ++) {
+// for (var j = 0; j < timeBlockInput.length; j ++) {
 
-  timeBlockInput[j].value = "Test-" + [j];
-  timeBlockValue = timeBlockInput[j].value
-  console.log(timeBlockValue);
+//   timeBlockInput[j].value = "Test-" + [j];
+//   var timeBlockValue = timeBlockInput[j].value
+//   console.log(timeBlockValue);
 
   
-  var timeAndValue = {
-    time: timeBlockInput[j].name,
-    value: timeBlockValue,
-  }
+//   var timeAndValue = {
+//     time: timeBlockInput[j].name,
+//     value: timeBlockValue,
+//   }
   
-  existingTimeBlock.push(timeAndValue)
-  localStorage.setItem("TimeAndValue", JSON.stringify(existingTimeBlock));
+//   existingTimeBlock.push(timeAndValue)
+//   localStorage.setItem("TimeAndValue", JSON.stringify(existingTimeBlock));
   
-}
+// }
   
 var button = document.querySelector("#nineAM > button")
 
@@ -57,8 +57,22 @@ button.addEventListener("click", function (e) {
   console.log(e);
   console.log(button.previousElementSibling.children[0].value);
 
-  
+
+  var timeAndValue = {
+    time: timeBlockInput[0].name,
+    value: timeBlockInput[0].value
+  }
+
+  existingTimeBlock.push(timeAndValue)
+  localStorage.setItem("TimeAndValue", JSON.stringify(existingTimeBlock));
+
 })
+
+if (existingTimeBlock) {
+
+  timeBlockInput[0].value = existingTimeBlock[0].value
+
+}
 
 
 // TODO: Allow a user to enter an event when they click a time block
