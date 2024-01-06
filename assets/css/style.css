@@ -33,7 +33,7 @@ header {
 
 .row {
   white-space: pre-wrap;
-  height: 80px;
+  /* height: 80px; */
   border-top: 1px solid white;
 }
 
@@ -41,6 +41,7 @@ header {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+  padding: 25px;
 }
 
 .past {
@@ -64,6 +65,7 @@ header {
   border-bottom-right-radius: 15px;
   background-color: #06aed5;
   color: white;
+  padding: 25px;
 }
 
 .saveBtn:hover {
@@ -78,4 +80,8 @@ header {
 
 .saveBtn:hover i {
   font-size: 20px;
+}
+
+textarea.form-control {
+  min-height: 100px;
 }

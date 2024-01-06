@@ -1,7 +1,7 @@
 //  Display the current day at the top of the calender when a user opens the planner.
 
 var currentDay = $('#currentDay');
-currentDay.text(dayjs().format('dddd MMMM YYYY'))
+currentDay.text(dayjs().format('dddd MMMM  D[th] YYYY'))
 
 //  Present time blocks for standard business hours when the user scrolls down.
 // This has been hardcoded in the HTML
@@ -30,7 +30,7 @@ $.each(timeBlockInput, function (i, value) {
   
 })
 
-var existingTimeBlock = JSON.parse(localStorage.getItem('TimeAndValue')) || [];
+
 
 // for (var j = 0; j < timeBlockInput.length; j ++) {
 
@@ -67,46 +67,26 @@ var existingTimeBlock = JSON.parse(localStorage.getItem('TimeAndValue')) || [];
 
 // })
 
-if (existingTimeBlock.length !== 0) {
+// Variable that is either assigned the value of an empty array or the local storage values from the save button function below
+var existingTimeBlock = JSON.parse(localStorage.getItem('TimeAndValue')) || [];
 
-  $.each(timeBlockInput, function (i) {
+//  Allow a user to enter an event when they click a time block
 
-    var dataTimeInt = $(this).attr('data-time');
-    
-    console.log('The data time of this time-block is ' + dataTimeInt);
-    
-    for (var j = 0; j < existingTimeBlock.length; j++) {
-      var existingTimeInt = existingTimeBlock[j].time
-      
-      console.log('The existing appointment is scheduled at ' + existingTimeInt);
-      
-      if (dataTimeInt === existingTimeInt) {
-        // console.log(this);
-        console.log(dataTimeInt + ' matches ' + existingTimeInt)
-        this.value = existingTimeBlock[j].value
-      }
-    }
-
-  })
-
-}
-
-//  Write function above but as a jQuery each loop for all buttons
+// Save the event in local storage when the save button is clicked in that time block.
 
 var saveButtons = $('.saveBtn');
-// console.log(saveButtons
 
 $.each(saveButtons, function (i, button) {
   $(button).on('click', function (e) {
     e.preventDefault();
     var inputTime = $(button).prev().children().eq(0).attr('data-time');
     var inputValue = $(button).prev().children().eq(0).val();
-
+    
     var timeAndValue = {
       time: inputTime,
       value: inputValue
     }
-
+    
     existingTimeBlock.push(timeAndValue)
     localStorage.setItem("TimeAndValue", JSON.stringify(existingTimeBlock));
     
@@ -114,9 +94,21 @@ $.each(saveButtons, function (i, button) {
   
 })
 
-// TODO: Allow a user to enter an event when they click a time block
+//  Persist events between refreshes of a page
 
-// TODO: Save the event in local storage when the save button is clicked in that time block.
+if (existingTimeBlock.length !== 0) {
 
+  $.each(timeBlockInput, function (i, dataTimeInt) {
 
-// TODO: Persist events between refreshes of a page
+    dataTimeInt = $(this).attr('data-time');
+    
+    for (var j = 0; j < existingTimeBlock.length; j++) {
+      var existingTimeInt = existingTimeBlock[j].time
+      
+      if (dataTimeInt === existingTimeInt) {
+        this.value = existingTimeBlock[j].value
+      }
+    }
+  })
+
+}
