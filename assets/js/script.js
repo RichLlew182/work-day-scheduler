@@ -9,7 +9,7 @@ currentDay.text(dayjs().format('dddd MMMM YYYY'))
 //  Color-code each time block based on past, present, and future when the time block is viewed.
 
 var currentTime = dayjs().format('H');
-console.log(currentTime + 'PM');
+// console.log(currentTime + 'PM');
 
 var timeBlockInput = $('.time-block textarea');
 
@@ -17,7 +17,7 @@ $.each(timeBlockInput, function (i, value) {
 
   var dataTime = (parseInt(value.dataset.time));
   var dataInputs = timeBlockInput[i];
-  console.log(`The current time is ${currentTime}`)
+  // console.log(`The current time is ${currentTime}`)
   
   if (dataTime > currentTime) {
     dataInputs.classList.add('future')
@@ -67,13 +67,31 @@ var existingTimeBlock = JSON.parse(localStorage.getItem('TimeAndValue')) || [];
 
 // })
 
-// if (existingTimeBlock) {
+if (existingTimeBlock.length !== 0) {
 
-//   timeBlockInput[0].value = existingTimeBlock[0].value
+  $.each(timeBlockInput, function (i) {
 
-// }
+    var dataTimeInt = $(this).attr('data-time');
+    
+    console.log('The data time of this time-block is ' + dataTimeInt);
+    
+    for (var j = 0; j < existingTimeBlock.length; j++) {
+      var existingTimeInt = existingTimeBlock[j].time
+      
+      console.log('The existing appointment is scheduled at ' + existingTimeInt);
+      
+      if (dataTimeInt === existingTimeInt) {
+        // console.log(this);
+        console.log(dataTimeInt + ' matches ' + existingTimeInt)
+        this.value = existingTimeBlock[j].value
+      }
+    }
 
-// TODO : Write function above but as a jQuery each loop for all buttons
+  })
+
+}
+
+//  Write function above but as a jQuery each loop for all buttons
 
 var saveButtons = $('.saveBtn');
 // console.log(saveButtons
@@ -81,11 +99,7 @@ var saveButtons = $('.saveBtn');
 $.each(saveButtons, function (i, button) {
   $(button).on('click', function (e) {
     e.preventDefault();
-    // console.log(e);
-    // console.log($(button).prev().children().eq(0).val());
-    // console.log(this);
-    // console.log($(this))
-    var inputTime = $(button).prev().children().eq(0).attr('name');
+    var inputTime = $(button).prev().children().eq(0).attr('data-time');
     var inputValue = $(button).prev().children().eq(0).val();
 
     var timeAndValue = {
@@ -93,7 +107,6 @@ $.each(saveButtons, function (i, button) {
       value: inputValue
     }
 
-    console.log(timeAndValue);
     existingTimeBlock.push(timeAndValue)
     localStorage.setItem("TimeAndValue", JSON.stringify(existingTimeBlock));
     
