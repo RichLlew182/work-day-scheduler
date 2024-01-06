@@ -49,22 +49,17 @@ for (var j = 0; j < timeBlockInput.length; j ++) {
   localStorage.setItem("TimeAndValue", JSON.stringify(existingTimeBlock));
   
 }
-
-
-// $(timeBlockInput).each(function (i) {
-//   var timeBlockValue = timeBlockInput.value;
-//   timeBlockValue = "Test";
-//   console.log(timeBlockValue)
   
-//   var timeAndValue = {
-//     time: timeBlockInput[i].name,
-//     value: timeBlockValue,
-//   }
+var button = document.querySelector("#nineAM > button")
 
-//   localStorage.setItem("TimeAndValue", JSON.stringify(timeAndValue));
-// })
+button.addEventListener("click", function (e) {
+  e.preventDefault();
+  console.log(e);
+  console.log(button.previousElementSibling.children[0].value);
 
   
+})
+
 
 // TODO: Allow a user to enter an event when they click a time block
 
