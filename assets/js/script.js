@@ -11,10 +11,9 @@ currentDay.text(dayjs().format('dddd MMMM YYYY'))
 var currentTime = dayjs().format('H');
 console.log(currentTime + 'PM');
 
-var timeArray = $('.time-block');
 var timeBlockInput = $('.time-block textarea');
 
-$.each(timeArray, function (i, value) {
+$.each(timeBlockInput, function (i, value) {
 
   var dataTime = (parseInt(value.dataset.time));
   var dataInputs = timeBlockInput[i];
@@ -50,30 +49,57 @@ var existingTimeBlock = JSON.parse(localStorage.getItem('TimeAndValue')) || [];
   
 // }
   
-var button = document.querySelector("#nineAM > button")
+// var button = document.querySelector("#nineAM > button")
 
-button.addEventListener("click", function (e) {
-  e.preventDefault();
-  console.log(e);
-  console.log(button.previousElementSibling.children[0].value);
+// button.addEventListener("click", function (e) {
+//   e.preventDefault();
+//   console.log(e);
+//   console.log(button.previousElementSibling.children[0].value);
 
 
-  var timeAndValue = {
-    time: timeBlockInput[0].name,
-    value: timeBlockInput[0].value
-  }
+//   var timeAndValue = {
+//     time: timeBlockInput[0].name,
+//     value: timeBlockInput[0].value
+//   }
 
-  existingTimeBlock.push(timeAndValue)
-  localStorage.setItem("TimeAndValue", JSON.stringify(existingTimeBlock));
+//   existingTimeBlock.push(timeAndValue)
+//   localStorage.setItem("TimeAndValue", JSON.stringify(existingTimeBlock));
 
+// })
+
+// if (existingTimeBlock) {
+
+//   timeBlockInput[0].value = existingTimeBlock[0].value
+
+// }
+
+// TODO : Write function above but as a jQuery each loop for all buttons
+
+var saveButtons = $('.saveBtn');
+// console.log(saveButtons
+
+$.each(saveButtons, function (i, button) {
+  $(button).on('click', function (e) {
+    e.preventDefault();
+    // console.log(e);
+    // console.log($(button).prev().children().eq(0).val());
+    // console.log(this);
+    // console.log($(this))
+    var inputTime = $(button).prev().children().eq(0).attr('name');
+    var inputValue = $(button).prev().children().eq(0).val();
+
+    var timeAndValue = {
+      time: inputTime,
+      value: inputValue
+    }
+
+    console.log(timeAndValue);
+    existingTimeBlock.push(timeAndValue)
+    localStorage.setItem("TimeAndValue", JSON.stringify(existingTimeBlock));
+    
+  })
+  
 })
-
-if (existingTimeBlock) {
-
-  timeBlockInput[0].value = existingTimeBlock[0].value
-
-}
-
 
 // TODO: Allow a user to enter an event when they click a time block
 
